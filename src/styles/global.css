@@ -1,0 +1,28 @@
+/* Global */
+html {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 18px;
+  color: var(--dark);
+  background-color: var(--gray);
+}
+
+main {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  display: inline;
+  color: var(--blue);
+  text-underline-offset: 4px;
+  text-decoration-color: transparent;
+  transition: var(--transition-all);
+
+  &:hover {
+    &:not(&:active) {
+      text-decoration-color: inherit;
+    }
+  }
+}

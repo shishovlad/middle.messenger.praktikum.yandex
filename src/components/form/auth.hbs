@@ -1,0 +1,12 @@
+<form class="form form-auth">
+  <h1>{{title}}</h1>
+
+  <div class="form__controls">
+    {{> @partial-block}}
+  </div>
+
+  <div class="form__actions">
+    {{>button/button type="submit" label=button-label}}
+    <a href="{{link-href}}">{{link-text}}</a>
+  </div>
+</form>

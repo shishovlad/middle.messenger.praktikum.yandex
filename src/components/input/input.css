@@ -1,0 +1,45 @@
+.form__control {
+  display: flex;
+  flex-direction: column;
+
+  label {
+    font-size: 12px;
+    line-height: 12px;
+    color: var(--input-label);
+    user-select: none;
+    touch-action: none;
+  }
+
+  input {
+    border: none;
+    border-bottom: 1px solid var(--input-border);
+    padding: 6px 0;
+
+    &:focus {
+      outline: none;
+      border-bottom-color: var(--input-border-focus);
+    }
+  }
+
+  p {
+    display: none;
+  }
+
+  &.has-error {
+    label {
+      color: var(--red);
+    }
+
+    input {
+      border-bottom-color: var(--red);
+    }
+
+    p {
+      display: block;
+      margin: 5px 0;
+      font-size: 12px;
+      line-height: 12px;
+      color: var(--red);
+    }
+  }
+}

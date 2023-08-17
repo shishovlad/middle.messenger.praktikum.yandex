@@ -1,0 +1,8 @@
+.avatar {
+  width: var(--size);
+  height: var(--size);
+  border-radius: 100%;
+  overflow: hidden;
+  object-fit: cover;
+  object-position: center;
+}

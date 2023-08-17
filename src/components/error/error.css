@@ -1,0 +1,24 @@
+.error {
+  margin: auto;
+  text-align: center;
+
+  &-code {
+    font-size: 120px;
+    margin-bottom: 72px;
+  }
+
+  &-message {
+    font-size: 28px;
+    font-weight: 300;
+    margin-bottom: 62px;
+  }
+
+  &-link {
+    font-size: 18px;
+    text-decoration: none;
+
+    button {
+      margin: auto;
+    }
+  }
+}
