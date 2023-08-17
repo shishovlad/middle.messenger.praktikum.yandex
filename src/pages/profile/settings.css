@@ -1,0 +1,30 @@
+.page-settings {
+  display: flex;
+  flex-direction: column;
+  padding: 50px 0;
+  margin: auto;
+  gap: 30px;
+
+  .form {
+    width: 740px;
+
+    h2 {
+      margin: 0 0 30px;
+    }
+
+    &__avatar {
+      display: block;
+      text-align: center;
+      cursor: pointer;
+      margin-bottom: 30px;
+
+      input {
+        display: none;
+      }
+    }
+  }
+
+  .link-logout {
+    color: var(--red);
+  }
+}

@@ -1,0 +1,13 @@
+<div class="form__control{{#if error}} has-error{{/if}}">
+  <label for="{{name}}">{{label}}</label>
+  <input
+    id="{{name}}"
+    name="{{name}}"
+    type="{{type}}"
+    value="{{value}}"
+    placeholder="{{placeholder}}"
+  />
+  {{#if error}}
+    <p>{{error}}</p>
+  {{/if}}
+</div>

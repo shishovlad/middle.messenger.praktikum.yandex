@@ -1,0 +1,22 @@
+:root {
+  /* Colors */
+  --white: #fff;
+  --dark: #1e1e1e;
+  --dark-light: #999999;
+  --blue: #3369f3;
+  --blue-hover: #e4edfd;
+  --red: #ff2f2f;
+  --gray: #fbfbfb;
+  --gray-border: #eaeaea;
+
+  --input-label: #999;
+  --input-border: #ddd;
+  --input-border-focus: var(--blue);
+
+  --button-color: var(--white);
+  --button-background: var(--blue);
+  --button-background-hover: #2a58ca;
+
+  /* Others */
+  --transition-all: all 0.15s ease-in-out;
+}

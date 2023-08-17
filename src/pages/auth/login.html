@@ -1,0 +1,11 @@
+{{#>layout title="Авторизация"}}
+  {{#>form/auth
+    title="Войти" 
+    button-label="Авторизоваться"
+    link-href="/src/pages/auth/signup.html"
+    link-text="Нет аккаунта?"
+  }}
+    {{>input/input type="text" name="login" label="Логин" placeholder="username"}}
+    {{>input/input type="password" name="password" label="Пароль" placeholder="••••••••••••"}}
+  {{/form/auth}}
+{{/layout}}
