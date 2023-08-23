@@ -1,6 +1,7 @@
 /** @type {import('postcss-load-config').Config} */
 const config = {
-  plugins: [require("autoprefixer"), require("postcss-nested")],
-};
+  // eslint-disable-next-line global-require
+  plugins: [require('autoprefixer'), require('postcss-nested')]
+}
 
-module.exports = config;
+module.exports = config
