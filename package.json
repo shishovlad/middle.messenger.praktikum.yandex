@@ -5,8 +5,8 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "start": "vite build && node ./server.js",
+    "build": "vite build --emptyOutDir",
+    "start": "vite build --emptyOutDir && node ./server.js",
     "preview": "vite preview",
     "type-checking": "tsc --noEmit",
     "eslint": "eslint --ext .js,.ts --ignore-path .gitignore .",
