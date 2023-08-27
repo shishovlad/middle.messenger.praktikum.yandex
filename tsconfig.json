@@ -19,5 +19,5 @@
     "strictNullChecks": true
   },
   "include": ["./**/*"],
-  "exclude": ["./dist"]
+  "exclude": ["dist", "node_modules"]
 }
