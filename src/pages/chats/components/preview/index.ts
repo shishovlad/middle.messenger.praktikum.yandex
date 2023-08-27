@@ -1,6 +1,6 @@
-import Block from '../../../utils/Block'
+import Block from '../../../../utils/Block'
 import template from './preview.hbs'
-import { Avatar, type AvatarProps } from '../../avatar'
+import { Avatar, type AvatarProps } from '../../../../components/avatar'
 import './preview.css'
 
 interface DialogPreviewProps {

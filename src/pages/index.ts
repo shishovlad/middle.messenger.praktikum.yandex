@@ -17,9 +17,6 @@ export class HomePage extends Block {
         <a href="/chats">Список диалогов</a>
       </li>
       <li>
-        <a href="/chats/dialog">Открытый диалог</a>
-      </li>
-      <li>
         <a href="/profile/settings">Настройки профиля</a>
       </li>
       <li>

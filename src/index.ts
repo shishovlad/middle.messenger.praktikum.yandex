@@ -3,12 +3,10 @@ import { registerComponent } from './utils/registerComponent'
 import { Button } from './components/button'
 import { Input } from './components/input'
 import { Avatar } from './components/avatar'
-import { DialogPreview } from './components/dialog/preview'
 
 registerComponent('Button', Button)
 registerComponent('Input', Input)
 registerComponent('Avatar', Avatar)
-registerComponent('DialogPreview', DialogPreview)
 
 window.addEventListener('DOMContentLoaded', () => {
   /**
