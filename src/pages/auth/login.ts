@@ -37,7 +37,7 @@ export class LoginPage extends Block {
       ButtonAuth,
       link: {
         text: 'Нет аккаунта?',
-        href: '/signup'
+        href: '#signup'
       },
       events: {
         submit: onSubmitForm

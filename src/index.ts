@@ -12,8 +12,8 @@ window.addEventListener('DOMContentLoaded', () => {
   /**
    * Решение для демонстрации страниц. Позже будем делать роутинг.
    */
-  const { pathname } = window.location
-  const slug = pathname.startsWith('/') ? pathname.slice(1) : pathname
+  const { hash } = window.location
+  const slug = hash.startsWith('#') ? hash.slice(1) : hash
 
   if (slug) {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment

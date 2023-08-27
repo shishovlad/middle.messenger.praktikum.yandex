@@ -11,7 +11,7 @@ export const ROUTES = {
   login: LoginPage,
   signup: SignupPage,
   chats: ChatsPage,
-  'profile/settings': ProfileSettingsPage,
+  'profile-settings': ProfileSettingsPage,
   notFound: NotFoundPage,
   serverError: ServerErrorPage
 }

@@ -70,7 +70,7 @@ export class SignupPage extends Block {
       ButtonAuth,
       link: {
         text: 'Войти',
-        href: '/login'
+        href: '#login'
       },
       events: {
         submit: onSubmitForm
