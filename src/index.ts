@@ -8,7 +8,7 @@ registerComponent('Button', Button)
 registerComponent('Input', Input)
 registerComponent('Avatar', Avatar)
 
-window.addEventListener('DOMContentLoaded', () => {
+function demoRouter() {
   /**
    * Решение для демонстрации страниц. Позже будем делать роутинг.
    */
@@ -22,4 +22,7 @@ window.addEventListener('DOMContentLoaded', () => {
   } else {
     render('home')
   }
-})
+}
+
+window.addEventListener('DOMContentLoaded', demoRouter)
+window.addEventListener('hashchange', demoRouter)
