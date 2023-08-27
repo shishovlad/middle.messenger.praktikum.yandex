@@ -6,6 +6,15 @@
 
 [https://mellow-beijinho-28b03d.netlify.app/](https://mellow-beijinho-28b03d.netlify.app/)
 
+### Страницы
+
+- [Авторизация](https://mellow-beijinho-28b03d.netlify.app/#login)
+- [Регистрация](https://mellow-beijinho-28b03d.netlify.app/#signup)
+- [Список диалогов](https://mellow-beijinho-28b03d.netlify.app/#chats)
+- [Настройки профиля](https://mellow-beijinho-28b03d.netlify.app/#profile-settings)
+- [404 ошибка](https://mellow-beijinho-28b03d.netlify.app/#notFound)
+- [500 ошибка](https://mellow-beijinho-28b03d.netlify.app/#serverError)
+
 ## Установка
 
 Убедитесь в том, что установлены зависимости:
@@ -43,3 +52,11 @@ npm run start
 - Макет: [Figma](https://www.figma.com/file/y7OIiC2xrD8O8ZeVR10SXf/middle.messenger.praktikum.yandex?type=design&node-id=0-1&mode=design&t=jQaFdcBYxp2ZJ8iP-0)
 - Шаблонизатор: [handlebars](https://handlebarsjs.com/)
 - Плагин шаблонизатора для сборщика: [vite-plugin-handlebars](https://www.npmjs.com/package/vite-plugin-handlebars)
+
+## Инструменты
+
+- TypeScript
+- Eslint
+- Prettier
+- SlyleLint
+- Postcss
