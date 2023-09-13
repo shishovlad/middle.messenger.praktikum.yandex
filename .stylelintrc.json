@@ -1,0 +1,10 @@
+{
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "selector-class-pattern": "^[a-zA-Z_-]+$",
+    "custom-property-empty-line-before": null,
+    "at-rule-empty-line-before": null,
+    "import-notation": null
+  },
+  "ignoreFiles": ["dist/*"]
+}

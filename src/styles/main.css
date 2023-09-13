@@ -1,18 +1,5 @@
-@import "modern-normalize/modern-normalize.css";
+@import 'modern-normalize/modern-normalize.css';
 
-@import "./variables.css";
-@import "./global.css";
-@import "./form.css";
-
-/* Pages */
-@import "/src/pages/profile/settings.css";
-@import "/src/pages/chat/list.css";
-
-/* Components */
-@import "/src/components/form/auth.css";
-@import "/src/components/input/input.css";
-@import "/src/components/button/button.css";
-@import "/src/components/error/error.css";
-@import "/src/components/avatar/avatar.css";
-@import "/src/components/chat/list.css";
-@import "/src/components/chat/preview.css";
+@import './variables.css';
+@import './global.css';
+@import './form.css';
