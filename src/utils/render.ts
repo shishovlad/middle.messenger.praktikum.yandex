@@ -1,14 +1,11 @@
-import { ROUTES } from '../routes'
+import Block from './Block'
 
-export function render(name: keyof typeof ROUTES) {
-  const root = document.querySelector('#app')!
-
+export function render(query: string, block: Block) {
+  const root = document.querySelector(query)!
   root.innerHTML = ''
 
-  const Page = ROUTES[name]
-  const page = new Page()
+  root.append(block.getContent()!)
+  block.dispatchComponentDidMount()
 
-  root.append(page.getContent()!)
-
-  page.dispatchComponentDidMount()
+  return root
 }

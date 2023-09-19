@@ -1,0 +1,117 @@
+.chat {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: var(--white);
+  overflow: hidden;
+
+  &__placeholder {
+    font-size: 40px;
+    margin: auto;
+    color: var(--gray-border);
+  }
+
+  &__header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 10px 20px;
+    border-bottom: 1px solid var(--gray-border);
+    background: var(--white);
+    display: flex;
+    align-items: center;
+
+    &-actions {
+      display: flex;
+      gap: 4px;
+      margin-left: auto;
+      margin-right: 0;
+    }
+  }
+
+  &__messages {
+    padding: 10px 20px;
+    margin-top: auto;
+    margin-bottom: 60px;
+    overflow: auto;
+  }
+
+  &__footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px 20px;
+    border-top: 1px solid var(--gray-border);
+    background: var(--white);
+    display: flex;
+    gap: 20px;
+
+    .form__control {
+      margin: auto 0;
+      width: 100%;
+
+      input {
+        background: var(--gray-border);
+        border-radius: 20px;
+        border-bottom: none;
+        padding: 10px 20px;
+
+        ::placeholder {
+          color: var(--input-label);
+        }
+      }
+
+      .btn {
+        margin-left: auto;
+      }
+    }
+  }
+}
+
+.modal {
+  position: absolute;
+  inset: 0;
+
+  &-wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgb(0 0 0 / 50%);
+    z-index: 9998;
+  }
+
+  &-container {
+    position: absolute;
+    top: 25%;
+    bottom: 0;
+    left: 25%;
+    background: var(--white);
+    border-radius: 20px;
+    width: 50%;
+    height: 50%;
+    z-index: 9999;
+    overflow: auto;
+
+    .modal__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px;
+      border-bottom: 1px solid var(--gray-border);
+      background: var(--message);
+    }
+
+    .modal__content {
+      padding: 20px;
+
+      &-list {
+        margin-top: 20px;
+        font-size: 14px;
+      }
+    }
+  }
+}

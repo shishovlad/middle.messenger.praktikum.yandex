@@ -1,28 +1,47 @@
-import { render } from './utils/render'
 import { registerComponent } from './utils/registerComponent'
+import { Link } from './components/link'
 import { Button } from './components/button'
 import { Input } from './components/input'
 import { Avatar } from './components/avatar'
+import { LoginPage } from './pages/auth/login'
+import { SignupPage } from './pages/auth/signup'
+import { SettingsPage } from './pages/profile/settings'
+import { MessengerPage } from './pages/messenger'
+import Router, { Routes } from './utils/Router'
+import AuthController from './controllers/AuthController'
 
+registerComponent('Link', Link)
 registerComponent('Button', Button)
 registerComponent('Input', Input)
 registerComponent('Avatar', Avatar)
 
-function demoRouter() {
-  /**
-   * Решение для демонстрации страниц. Позже будем делать роутинг.
-   */
-  const { hash } = window.location
-  const slug = hash.startsWith('#') ? hash.slice(1) : hash
+window.addEventListener('DOMContentLoaded', async () => {
+  Router.use(Routes.Index, LoginPage)
+    .use(Routes.Register, SignupPage)
+    .use(Routes.Settings, SettingsPage)
+    .use(Routes.Messenger, MessengerPage)
 
-  if (slug) {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    render(slug)
-  } else {
-    render('home')
+  let isProtectedRoute = true
+
+  switch (window.location.pathname) {
+    case Routes.Index:
+    case Routes.Register:
+      isProtectedRoute = false
   }
-}
 
-window.addEventListener('DOMContentLoaded', demoRouter)
-window.addEventListener('hashchange', demoRouter)
+  try {
+    await AuthController.fetchUser()
+
+    Router.start()
+
+    if (!isProtectedRoute) {
+      Router.go(Routes.Messenger)
+    }
+  } catch (e) {
+    Router.start()
+
+    if (isProtectedRoute) {
+      Router.go(Routes.Index)
+    }
+  }
+})

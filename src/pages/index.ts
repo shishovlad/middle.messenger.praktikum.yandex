@@ -8,22 +8,22 @@ export class HomePage extends Block {
   static template = Handlebars.compile(`
     <ul>
       <li>
-        <a href="#login">Авторизация</a>
+        <a href="/">Авторизация</a>
       </li>
       <li>
-        <a href="#signup">Регистрация</a>
+        <a href="/sign-up">Регистрация</a>
       </li>
       <li>
-        <a href="#chats">Список диалогов</a>
+        <a href="/messenger">Список диалогов</a>
       </li>
       <li>
-        <a href="#profile-settings">Настройки профиля</a>
+        <a href="/settings">Настройки профиля</a>
       </li>
       <li>
-        <a href="#notFound">404 ошибка</a>
+        <a href="/not-found">404 ошибка</a>
       </li>
       <li>
-        <a href="#serverError">500 ошибка</a>
+        <a href="/server-error">500 ошибка</a>
       </li>
 
       <style>

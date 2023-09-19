@@ -1,0 +1,20 @@
+.chat-create {
+  display: block;
+
+  &__header {
+    padding: 10px 20px;
+    border-bottom: 1px solid var(--gray-border);
+    display: flex;
+    align-items: center;
+  }
+
+  &__body {
+    padding: 10px 20px;
+    margin-top: 20px;
+    overflow: auto;
+
+    .btn {
+      margin-top: 10px;
+    }
+  }
+}

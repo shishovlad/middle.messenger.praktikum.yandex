@@ -1,3 +1,5 @@
+import queryStringify from './helpers/queryStringify'
+
 enum METHODS {
   GET = 'GET',
   POST = 'POST',
@@ -6,70 +8,40 @@ enum METHODS {
   DELETE = 'DELETE'
 }
 
-type MethodOptions = {
-  method: METHODS
-  data: string | Record<string, string>
-  headers: Record<string, string>
-  timeout: number
+type Options = {
+  data?: string | Record<string, unknown> | FormData
+  headers?: Record<string, string>
+  timeout?: number
 }
-
-type Method = (url: string, options: MethodOptions) => Promise<unknown>
 
 const TIMEOUT_DEFAULT = 5000
 
-function queryStringify(data: string | Record<string, string>) {
-  if (typeof data !== 'object') {
-    throw new Error('Data must be object')
-  }
-
-  const keys = Object.keys(data)
-
-  return keys.reduce(
-    (result, key, index) =>
-      `${result}${key}=${data[key]}${index < keys.length - 1 ? '&' : ''}`,
-    '?'
-  )
-}
-
 export class HTTPTransport {
-  get: Method = (url, options) => {
-    return this.request(
-      url,
-      { ...options, method: METHODS.GET },
-      options.timeout
-    )
+  public readonly API_URL = 'https://ya-praktikum.tech/api/v2'
+
+  public get<T>(endpoint: string, options?: Options): Promise<T> {
+    const url = endpoint + queryStringify(options?.data)
+    return this.request<T>(url, options, METHODS.GET)
   }
 
-  post: Method = (url, options) => {
-    return this.request(
-      url,
-      { ...options, method: METHODS.POST },
-      options.timeout
-    )
+  public post<T>(endpoint: string, options?: Options): Promise<T> {
+    return this.request<T>(endpoint, options, METHODS.POST)
   }
 
-  put: Method = (url, options) => {
-    return this.request(
-      url,
-      { ...options, method: METHODS.PUT },
-      options.timeout
-    )
+  public put<T>(endpoint: string, options?: Options): Promise<T> {
+    return this.request<T>(endpoint, options, METHODS.PUT)
   }
 
-  delete: Method = (url, options) => {
-    return this.request(
-      url,
-      { ...options, method: METHODS.DELETE },
-      options.timeout
-    )
+  public delete<T>(endpoint: string, options?: Options): Promise<T> {
+    return this.request<T>(endpoint, options, METHODS.DELETE)
   }
 
-  request = (
+  private request<T>(
     url: string,
-    options: MethodOptions,
-    timeout: number = TIMEOUT_DEFAULT
-  ) => {
-    const { headers, method, data } = options
+    options: Options = {},
+    method: METHODS
+  ): Promise<T> {
+    const { data = {}, headers = {}, timeout = TIMEOUT_DEFAULT } = options
 
     return new Promise((resolve, reject) => {
       if (!method) {
@@ -80,38 +52,44 @@ export class HTTPTransport {
       const xhr = new XMLHttpRequest()
       const isGet = method === METHODS.GET
 
-      xhr.open(method, isGet && !!data ? `${url}${queryStringify(data)}` : url)
-
-      Object.keys(headers).forEach((key) => {
-        xhr.setRequestHeader(key, headers[key])
-      })
-
-      xhr.onload = () => resolve(xhr)
+      // RUN
+      xhr.open(method, this.API_URL + url)
       xhr.onreadystatechange = () => {
-        if (xhr.readyState !== 4) {
-          return
-        }
-        if (xhr.status === 200) {
-          resolve(xhr)
-        } else {
-          reject(xhr)
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+          if (xhr.status === 200) {
+            resolve(xhr.response)
+          } else {
+            reject(xhr.response)
+          }
         }
       }
 
+      // FIELDS
       xhr.timeout = timeout
       xhr.responseType = 'json'
       xhr.withCredentials = true
 
-      xhr.onabort = reject
-      xhr.onerror = reject
-      xhr.ontimeout = reject
+      // ERRORS
+      xhr.onabort = () => reject({ reason: 'abort' })
+      xhr.onerror = () => reject({ reason: 'network error' })
+      xhr.ontimeout = () => reject({ reason: 'timeout' })
 
+      // HEADERS
+      if (!(data instanceof FormData)) {
+        xhr.setRequestHeader('Content-Type', 'application/json')
+      }
+
+      Object.keys(headers).forEach((key) =>
+        xhr.setRequestHeader(key, headers[key])
+      )
+
+      // Sending request
       if (isGet || !data) {
         xhr.send()
-      } else {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        //@ts-ignore
+      } else if (data instanceof FormData) {
         xhr.send(data)
+      } else {
+        xhr.send(JSON.stringify(data))
       }
     })
   }

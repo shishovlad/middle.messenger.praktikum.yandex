@@ -1,0 +1,23 @@
+.messenger {
+  display: flex;
+
+  &__chats {
+    flex: none;
+    width: 420px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--gray-border);
+    overflow: auto;
+  }
+
+  &__view {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background: var(--white);
+    overflow: hidden;
+  }
+}

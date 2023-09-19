@@ -1,0 +1,15 @@
+<a href='#{{id}}' class='chat-preview {{#if selectedChat}}is-active{{/if}}'>
+  <div class='chat-preview__avatar'>
+    {{{avatar}}}
+  </div>
+  <div class='chat-preview__title'>
+    <div class='message-title'>{{title}}</div>
+    <div class='message-time'>{{last_message.time}}</div>
+  </div>
+  <div class='chat-preview__subtitle'>
+    <div class='message-text'>{{last_message.content}}</div>
+    {{#if unread_count}}
+      <div class='message-badge'>{{unread_count}}</div>
+    {{/if}}
+  </div>
+</a>

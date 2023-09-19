@@ -4,6 +4,8 @@ import './template.css'
 import { Button } from '../../components/button'
 import { Input } from '../../components/input'
 import { onSubmitForm } from '../../utils/events/onSubmitForm'
+import AuthController from '../../controllers/AuthController'
+import { SignupRequest } from '../../api/types'
 
 export class SignupPage extends Block {
   constructor() {
@@ -12,6 +14,7 @@ export class SignupPage extends Block {
         type: 'email',
         name: 'email',
         label: 'Почта',
+        value: 'qwerty0912@qwerty0912.ru',
         placeholder: 'email@gmail.com',
         rules: ['required', 'email']
       }),
@@ -19,6 +22,7 @@ export class SignupPage extends Block {
         type: 'text',
         name: 'login',
         label: 'Логин',
+        value: 'qwerty0912',
         placeholder: 'username',
         rules: ['required', 'login']
       }),
@@ -26,6 +30,7 @@ export class SignupPage extends Block {
         type: 'text',
         name: 'first_name',
         label: 'Имя',
+        value: 'Иван',
         placeholder: 'Иван',
         rules: ['required', 'name']
       }),
@@ -33,6 +38,7 @@ export class SignupPage extends Block {
         type: 'text',
         name: 'second_name',
         label: 'Фамилия',
+        value: 'Иванов',
         placeholder: 'Иванов',
         rules: ['required', 'name']
       }),
@@ -40,6 +46,7 @@ export class SignupPage extends Block {
         type: 'text',
         name: 'phone',
         label: 'Телефон',
+        value: '+7 999 999 99 99',
         placeholder: '+7 999 999 99 99',
         rules: ['required', 'phone']
       }),
@@ -47,6 +54,7 @@ export class SignupPage extends Block {
         type: 'password',
         name: 'password',
         label: 'Пароль',
+        value: 'test123TEST',
         placeholder: '••••••••••••',
         rules: ['required', 'password']
       }),
@@ -54,6 +62,7 @@ export class SignupPage extends Block {
         type: 'password',
         name: 'confirm-password',
         label: 'Пароль (ещё раз)',
+        value: 'test123TEST',
         placeholder: '••••••••••••',
         rules: ['required', 'password', 'confirm_password']
       })
@@ -70,10 +79,16 @@ export class SignupPage extends Block {
       ButtonAuth,
       link: {
         text: 'Войти',
-        href: '#login'
+        href: '/'
       },
       events: {
-        submit: onSubmitForm
+        submit: (e: Event) => {
+          const { isValid, values } = onSubmitForm(e)
+
+          if (isValid) {
+            AuthController.signup(values as SignupRequest)
+          }
+        }
       }
     })
   }
