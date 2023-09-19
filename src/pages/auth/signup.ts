@@ -14,7 +14,7 @@ export class SignupPage extends Block {
         type: 'email',
         name: 'email',
         label: 'Почта',
-        value: 'qwerty0912@qwerty0912.ru',
+        value: '',
         placeholder: 'email@gmail.com',
         rules: ['required', 'email']
       }),
@@ -22,7 +22,7 @@ export class SignupPage extends Block {
         type: 'text',
         name: 'login',
         label: 'Логин',
-        value: 'qwerty0912',
+        value: '',
         placeholder: 'username',
         rules: ['required', 'login']
       }),
@@ -30,7 +30,7 @@ export class SignupPage extends Block {
         type: 'text',
         name: 'first_name',
         label: 'Имя',
-        value: 'Иван',
+        value: '',
         placeholder: 'Иван',
         rules: ['required', 'name']
       }),
@@ -38,7 +38,7 @@ export class SignupPage extends Block {
         type: 'text',
         name: 'second_name',
         label: 'Фамилия',
-        value: 'Иванов',
+        value: '',
         placeholder: 'Иванов',
         rules: ['required', 'name']
       }),
@@ -46,15 +46,15 @@ export class SignupPage extends Block {
         type: 'text',
         name: 'phone',
         label: 'Телефон',
-        value: '+7 999 999 99 99',
-        placeholder: '+7 999 999 99 99',
+        value: '',
+        placeholder: '+79999999999',
         rules: ['required', 'phone']
       }),
       new Input({
         type: 'password',
         name: 'password',
         label: 'Пароль',
-        value: 'test123TEST',
+        value: '',
         placeholder: '••••••••••••',
         rules: ['required', 'password']
       }),
@@ -62,7 +62,7 @@ export class SignupPage extends Block {
         type: 'password',
         name: 'confirm-password',
         label: 'Пароль (ещё раз)',
-        value: 'test123TEST',
+        value: '',
         placeholder: '••••••••••••',
         rules: ['required', 'password', 'confirm_password']
       })

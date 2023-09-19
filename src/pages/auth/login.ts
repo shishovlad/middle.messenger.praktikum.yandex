@@ -14,7 +14,7 @@ export class LoginPage extends Block {
         type: 'text',
         name: 'login',
         label: 'Логин',
-        value: 'qwerty0912',
+        value: '',
         placeholder: 'username',
         rules: ['required', 'login']
       }),
@@ -23,7 +23,7 @@ export class LoginPage extends Block {
         type: 'password',
         name: 'password',
         label: 'Пароль',
-        value: 'test123TEST',
+        value: '',
         placeholder: '••••••••••••',
         rules: ['required', 'password']
       })
