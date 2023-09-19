@@ -8,12 +8,12 @@
 
 ### Страницы
 
-- [Авторизация](https://mellow-beijinho-28b03d.netlify.app/#login)
-- [Регистрация](https://mellow-beijinho-28b03d.netlify.app/#signup)
-- [Список диалогов](https://mellow-beijinho-28b03d.netlify.app/#chats)
-- [Настройки профиля](https://mellow-beijinho-28b03d.netlify.app/#profile-settings)
-- [404 ошибка](https://mellow-beijinho-28b03d.netlify.app/#notFound)
-- [500 ошибка](https://mellow-beijinho-28b03d.netlify.app/#serverError)
+- [Авторизация](https://mellow-beijinho-28b03d.netlify.app/)
+- [Регистрация](https://mellow-beijinho-28b03d.netlify.app/sign-up)
+- [Мессенджер](https://mellow-beijinho-28b03d.netlify.app/messenger)
+- [Настройки профиля](https://mellow-beijinho-28b03d.netlify.app/settings)
+- [404 ошибка](https://mellow-beijinho-28b03d.netlify.app/anything) — любой `slug`, которого нет в `Routes`
+- [500 ошибка](https://mellow-beijinho-28b03d.netlify.app/) — _не было реализовано в рамках текущего спринта_
 
 ## Установка
 
