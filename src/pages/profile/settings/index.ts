@@ -20,26 +20,38 @@ type ProfileProps = {
   events?: Record<string, (e: Event) => unknown>
 }
 
+async function fetchFormUpdate(
+  formId: 'profile' | 'changePassword',
+  values: UserUpdateRequest | UserChangePasswordRequest
+) {
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    await UserAPI[formId](values as any)
+  } catch (e) {
+    console.error(formId, values, e)
+  }
+}
+
 class SettingsPageBase extends Block<ProfileProps> {
   constructor(props: ProfileProps) {
     super({
       ...props,
       events: {
-        submit: (e: Event) => {
+        submit: async (e: Event) => {
           e.preventDefault()
           const formId = (e.target as HTMLFormElement).id
           const { isValid, values } = onSubmitForm(e)
 
-          if (isValid) {
-            switch (formId) {
-              case 'profile':
-                UserAPI.profile(values as UserUpdateRequest)
-                break
+          if (!isValid) return
 
-              case 'changePassword':
-                UserAPI.changePassword(values as UserChangePasswordRequest)
-                break
-            }
+          switch (formId) {
+            case 'profile':
+              await fetchFormUpdate(formId, values as UserUpdateRequest)
+              break
+
+            case 'changePassword':
+              await fetchFormUpdate(formId, values as UserChangePasswordRequest)
+              break
           }
         }
       }
@@ -58,18 +70,23 @@ class SettingsPageBase extends Block<ProfileProps> {
         type: 'file',
         name: 'avatar',
         events: {
-          change: (e) => {
+          change: async (e) => {
             const input = e.target as HTMLInputElement
             const form = input.closest('form')
             const image = form?.querySelector('img') as HTMLImageElement
+
+            if (!form) return
 
             const file = input.files?.[0]
             if (image && file) {
               image.src = window.URL.createObjectURL(file)
             }
 
-            if (form) {
-              UserAPI.avatar(new FormData(form))
+            try {
+              await UserAPI.avatar(new FormData(form))
+            } catch (e) {
+              image.src = ''
+              console.error(e)
             }
           }
         }

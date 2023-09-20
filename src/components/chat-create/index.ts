@@ -54,7 +54,11 @@ export class ChatCreateBase extends Block {
       events: {
         click: async () => {
           const title = this.children.chatTitle.getValue()
-          await ChatsController.create(title)
+          try {
+            await ChatsController.create(title)
+          } catch (e) {
+            console.error(e)
+          }
         }
       }
     })

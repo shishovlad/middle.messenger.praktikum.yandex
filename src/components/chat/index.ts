@@ -38,8 +38,12 @@ class ChatBase extends Block<ChatProps> {
       events: {
         click: async () => {
           const chatId = this.props.selectedChat?.id
-          if (chatId) {
+          if (!chatId) return
+
+          try {
             await ChatsController.delete(chatId)
+          } catch (e) {
+            console.error(e)
           }
         }
       }
@@ -61,9 +65,14 @@ class ChatBase extends Block<ChatProps> {
           const input = this.children.input as Input
           const message = input.getValue()
 
+          if (!message.length) return
           input.setValue('')
 
-          MessagesController.sendMessage(this.props.selectedChat!.id, message)
+          try {
+            MessagesController.sendMessage(this.props.selectedChat!.id, message)
+          } catch (e) {
+            console.error(e)
+          }
         }
       }
     })

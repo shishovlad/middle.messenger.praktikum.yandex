@@ -8,16 +8,16 @@ import {
 export class UserAPI {
   http = new HTTPTransport()
 
-  profile(data: UserUpdateRequest) {
-    return this.http.put<UserResponse>('/user/profile', { data })
+  async profile(data: UserUpdateRequest) {
+    return await this.http.put<UserResponse>('/user/profile', { data })
   }
 
-  avatar(data: FormData) {
-    return this.http.put<UserResponse>('/user/profile/avatar', { data })
+  async avatar(data: FormData) {
+    return await this.http.put<UserResponse>('/user/profile/avatar', { data })
   }
 
-  changePassword(data: UserChangePasswordRequest) {
-    return this.http.put('/user/password', { data })
+  async changePassword(data: UserChangePasswordRequest) {
+    return await this.http.put('/user/password', { data })
   }
 
   search(login: string) {

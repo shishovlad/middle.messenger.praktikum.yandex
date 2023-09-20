@@ -13,27 +13,31 @@ type Options = {
   headers?: Record<string, string>
   timeout?: number
 }
+type HTTPMethod = <R = unknown>(
+  endpoint: string,
+  options?: Options
+) => Promise<R>
 
 const TIMEOUT_DEFAULT = 5000
 
 export class HTTPTransport {
   public readonly API_URL = 'https://ya-praktikum.tech/api/v2'
 
-  public get<T>(endpoint: string, options?: Options): Promise<T> {
+  public get: HTTPMethod = (endpoint, options = {}) => {
     const url = endpoint + queryStringify(options?.data)
-    return this.request<T>(url, options, METHODS.GET)
+    return this.request(url, options, METHODS.GET)
   }
 
-  public post<T>(endpoint: string, options?: Options): Promise<T> {
-    return this.request<T>(endpoint, options, METHODS.POST)
+  public post: HTTPMethod = (endpoint, options = {}) => {
+    return this.request(endpoint, options, METHODS.POST)
   }
 
-  public put<T>(endpoint: string, options?: Options): Promise<T> {
-    return this.request<T>(endpoint, options, METHODS.PUT)
+  public put: HTTPMethod = (endpoint, options = {}) => {
+    return this.request(endpoint, options, METHODS.PUT)
   }
 
-  public delete<T>(endpoint: string, options?: Options): Promise<T> {
-    return this.request<T>(endpoint, options, METHODS.DELETE)
+  public delete: HTTPMethod = (endpoint, options = {}) => {
+    return this.request(endpoint, options, METHODS.DELETE)
   }
 
   private request<T>(

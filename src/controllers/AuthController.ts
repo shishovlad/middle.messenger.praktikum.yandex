@@ -1,6 +1,7 @@
 import API, { AuthAPI } from '../api/AuthAPI'
 import Router, { Routes } from '../utils/Router'
 import store from '../utils/Store'
+import MessagesController from './MessagesController'
 
 export class AuthController {
   private readonly api: AuthAPI
@@ -34,14 +35,17 @@ export class AuthController {
   }
 
   async fetchUser() {
-    const user = await this.api.user()
-
-    store.set('user', user)
+    try {
+      const user = await this.api.user()
+      store.set('user', user)
+    } catch (e) {
+      console.error('fetchUser error', e)
+    }
   }
 
   async logout() {
     try {
-      // MessagesController.closeAll()
+      MessagesController.closeAll()
 
       await this.api.logout()
 

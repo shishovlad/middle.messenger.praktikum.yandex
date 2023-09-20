@@ -65,8 +65,9 @@ export class ChatUsersBase extends Block<ChatUsersProps> {
       events: {
         click: async () => {
           const { selectedChatId } = store.getState()
+          if (!selectedChatId) return
 
-          if (selectedChatId) {
+          try {
             await ChatsController.addUserToChat(
               selectedChatId,
               this.selectedUsers.add
@@ -77,6 +78,8 @@ export class ChatUsersBase extends Block<ChatUsersProps> {
             ;(this.children.addUsers as Block).setProps({ list: [] })
 
             ChatsController.selectChat(selectedChatId)
+          } catch (e) {
+            console.log(e)
           }
         }
       }
@@ -95,8 +98,9 @@ export class ChatUsersBase extends Block<ChatUsersProps> {
       events: {
         click: async () => {
           const { selectedChatId } = store.getState()
+          if (!selectedChatId) return
 
-          if (selectedChatId) {
+          try {
             await ChatsController.deleteUserToChat(
               selectedChatId,
               this.selectedUsers.delete
@@ -104,6 +108,8 @@ export class ChatUsersBase extends Block<ChatUsersProps> {
             this.selectedUsers.delete = []
 
             ChatsController.selectChat(selectedChatId)
+          } catch (e) {
+            console.error(e)
           }
         }
       }
