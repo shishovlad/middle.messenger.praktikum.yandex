@@ -61,6 +61,11 @@ class SettingsPageBase extends Block<ProfileProps> {
   init() {
     const { user } = this.props
 
+    this.children.linkToBack = new Link({
+      href: '/messenger',
+      text: '⬅️ Вернуться'
+    })
+
     this.children.avatar = [
       new Avatar({
         size: '130px',
