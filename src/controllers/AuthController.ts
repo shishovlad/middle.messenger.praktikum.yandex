@@ -35,12 +35,8 @@ export class AuthController {
   }
 
   async fetchUser() {
-    try {
-      const user = await this.api.user()
-      store.set('user', user)
-    } catch (e) {
-      console.error('fetchUser error', e)
-    }
+    const user = await this.api.user()
+    store.set('user', user)
   }
 
   async logout() {

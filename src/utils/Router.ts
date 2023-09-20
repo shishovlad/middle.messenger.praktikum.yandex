@@ -19,12 +19,11 @@ export class Router {
   private _currentRoute: Route | null = null
   private _rootQuery: string = '#app'
 
-  constructor(rootQuery: string) {
+  constructor() {
     if (Router.__instance) {
       return Router.__instance
     }
 
-    this._rootQuery = rootQuery
     Router.__instance = this
   }
 
@@ -36,15 +35,16 @@ export class Router {
   }
 
   start() {
-    window.onpopstate = ((event: PopStateEvent) => {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      this._onRoute((event.currentTarget as any)?.location.pathname)
-    }).bind(this)
+    window.onpopstate = (event) => {
+      if (event.currentTarget instanceof Window) {
+        this._onRoute(event.currentTarget.location.pathname)
+      }
+    }
 
     this._onRoute(window.location.pathname)
   }
 
-  _onRoute(pathname: Routes | string) {
+  async _onRoute(pathname: Routes | string) {
     const route = this.getRoute(pathname)
     if (!route) {
       // show 404 error
@@ -53,7 +53,7 @@ export class Router {
     }
 
     if (this._currentRoute && this._currentRoute !== route) {
-      this._currentRoute.leave()
+      await this._currentRoute.leave()
     }
 
     this._currentRoute = route
@@ -78,4 +78,4 @@ export class Router {
   }
 }
 
-export default new Router('#app')
+export default new Router()

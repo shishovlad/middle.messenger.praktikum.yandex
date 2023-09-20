@@ -79,7 +79,7 @@ export class ChatUsersBase extends Block<ChatUsersProps> {
 
             ChatsController.selectChat(selectedChatId)
           } catch (e) {
-            console.log(e)
+            console.error(e)
           }
         }
       }

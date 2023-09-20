@@ -6,6 +6,7 @@ import { Button } from '../../components/button'
 import { onSubmitForm } from '../../utils/events/onSubmitForm'
 import AuthController from '../../controllers/AuthController'
 import { SigninRequest } from '../../api/types'
+import { Link } from '../../components/link'
 
 export class LoginPage extends Block {
   constructor() {
@@ -38,10 +39,10 @@ export class LoginPage extends Block {
       title: 'Войти',
       InputsAuth,
       ButtonAuth,
-      link: {
+      link: new Link({
         text: 'Нет аккаунта?',
         href: '/sign-up'
-      },
+      }),
       events: {
         submit: (e: Event) => {
           const { isValid, values } = onSubmitForm(e)
