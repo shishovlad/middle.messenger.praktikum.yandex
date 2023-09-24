@@ -1,0 +1,26 @@
+<section data-view='chat'>
+  <div class='chat'>
+    {{#if selectedChat}}
+      <div class='chat__header'>
+        <div class='chat__header-title'>
+          {{{selectedChat.title}}}
+        </div>
+        <div class='chat__header-actions'>
+          {{{buttonToChatUsers}}}
+          {{{buttonToChatDelete}}}
+        </div>
+      </div>
+      <div class='chat__messages'>
+        {{{messages}}}
+      </div>
+      <div class='chat__footer'>
+        {{{input}}}
+        {{{button}}}
+      </div>
+    {{else}}
+      <div class='chat__placeholder'>
+        Выберите чат
+      </div>
+    {{/if}}
+  </div>
+</section>

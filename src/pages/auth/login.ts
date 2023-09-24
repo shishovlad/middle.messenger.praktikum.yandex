@@ -4,6 +4,9 @@ import './template.css'
 import { Input } from '../../components/input'
 import { Button } from '../../components/button'
 import { onSubmitForm } from '../../utils/events/onSubmitForm'
+import AuthController from '../../controllers/AuthController'
+import { SigninRequest } from '../../api/types'
+import { Link } from '../../components/link'
 
 export class LoginPage extends Block {
   constructor() {
@@ -12,8 +15,8 @@ export class LoginPage extends Block {
         type: 'text',
         name: 'login',
         label: 'Логин',
+        value: '',
         placeholder: 'username',
-        error: '',
         rules: ['required', 'login']
       }),
 
@@ -21,6 +24,7 @@ export class LoginPage extends Block {
         type: 'password',
         name: 'password',
         label: 'Пароль',
+        value: '',
         placeholder: '••••••••••••',
         rules: ['required', 'password']
       })
@@ -35,12 +39,18 @@ export class LoginPage extends Block {
       title: 'Войти',
       InputsAuth,
       ButtonAuth,
-      link: {
+      link: new Link({
         text: 'Нет аккаунта?',
-        href: '#signup'
-      },
+        href: '/sign-up'
+      }),
       events: {
-        submit: onSubmitForm
+        submit: (e: Event) => {
+          const { isValid, values } = onSubmitForm(e)
+
+          if (isValid) {
+            AuthController.signin(values as SigninRequest)
+          }
+        }
       }
     })
   }

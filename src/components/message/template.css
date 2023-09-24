@@ -1,0 +1,31 @@
+.message {
+  padding: 10px;
+  color: var(--dark);
+  margin-bottom: 20px;
+  background: var(--message);
+  border-radius: 10px;
+  border-top-left-radius: 0;
+  width: max-content;
+  max-width: 45%;
+  font-size: 14px;
+  line-height: 1.25;
+
+  small {
+    color: var(--dark-light);
+    margin-top: 4px;
+    display: block;
+    text-align: right;
+  }
+
+  &.is-mine {
+    background: var(--blue-hover);
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 0;
+    margin-right: 0;
+    margin-left: auto;
+
+    small {
+      color: var(--blue);
+    }
+  }
+}

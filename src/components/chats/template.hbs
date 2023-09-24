@@ -1,0 +1,22 @@
+<div class='chats'>
+  <div class='chats__head'>
+    <div class='chats__head-actions'>
+      {{{buttonCreateChat}}}
+      {{{linkToProfile}}}
+    </div>
+
+    <form>
+      {{{search}}}
+    </form>
+  </div>
+
+  <div class='chats__body'>
+    <aside>
+      {{#if isLoaded}}
+        {{{chats}}}
+      {{else}}
+        Loading...
+      {{/if}}
+    </aside>
+  </div>
+</div>

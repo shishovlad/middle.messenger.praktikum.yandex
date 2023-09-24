@@ -15,4 +15,17 @@
       background: var(--button-background-hover);
     }
   }
+
+  &.outline {
+    color: var(--dark);
+    border: 2px solid var(--gray-border);
+    background-color: transparent;
+    padding: 4px 8px;
+
+    &:hover {
+      &:not(&:active) {
+        background: var(--gray);
+      }
+    }
+  }
 }

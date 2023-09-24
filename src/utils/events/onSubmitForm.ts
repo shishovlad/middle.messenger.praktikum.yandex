@@ -1,10 +1,12 @@
+type Values = Record<string, string>
+
 export const onSubmitForm = (e: Event) => {
   e.preventDefault()
 
   let hasError = false
 
   const inputs = (e.target as HTMLFormElement).querySelectorAll('input')
-  const formData: Record<string, string> = {}
+  const formData: Values = {}
 
   Array.from(inputs).forEach((input: HTMLInputElement) => {
     input.focus()
@@ -25,7 +27,10 @@ export const onSubmitForm = (e: Event) => {
     }
   })
 
-  if (!hasError && Object.keys(formData).length) {
-    console.log(formData)
+  const isValid = !hasError && Object.keys(formData).length
+
+  return {
+    isValid,
+    values: formData
   }
 }

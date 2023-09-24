@@ -1,26 +1,28 @@
 <section class='page-settings'>
-  <form class='form'>
-    <label class='form__avatar' for='avatar' title='Загрузить фото профиля'>
-      {{{ChangeProfileAvatar}}}
-      <input type='file' name='avatar' id='avatar' />
-    </label>
+  {{{linkToBack}}}
 
-    <div class='form__controls'>
-      {{{ChangeProfileInputs}}}
-      {{{ChangeProfileSave}}}
-    </div>
+  <div class='form'>
+    <form>
+      <label class='form__avatar' for='avatar' title='Загрузить фото профиля'>
+        {{{avatar}}}
+      </label>
+    </form>
 
-  </form>
+    <form id='profile'>
+      <div class='form__controls'>
+        {{{profile}}}
+      </div>
+    </form>
+  </div>
 
-  <form class='form'>
+  <form class='form' id='changePassword'>
     <h2>Изменить пароль</h2>
     <div class='form__controls'>
-      {{{ChangePasswordInputs}}}
-      {{{ChangePasswordSave}}}
+      {{{password}}}
     </div>
   </form>
 
   <div>
-    <a href='/login' class='link-logout'>Выйти</a>
+    {{{logout}}}
   </div>
 </section>

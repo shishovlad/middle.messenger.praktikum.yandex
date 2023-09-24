@@ -2,10 +2,15 @@ import { v4 as makeUUID } from 'uuid'
 import EventBus from './EventBus'
 
 type Event = Record<string, () => void>
-type Props = Record<string, unknown>
-type Children = Record<string, Block | Block[]>
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type Children = Record<string, any>
 
-class Block {
+export type BlockProps = Record<string, unknown>
+export type BlockConstructable<P extends BlockProps = BlockProps> = {
+  new (props: P): Block<P>
+}
+
+class Block<Props extends BlockProps = BlockProps> {
   static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
@@ -23,7 +28,7 @@ class Block {
   protected children: Children
   protected eventBus: () => EventBus
 
-  constructor(propsWithChildren: Props = {}, tagName = 'div') {
+  constructor(propsWithChildren: Props, tagName = 'div') {
     const eventBus = new EventBus()
     const { props, children } = this._getChildrenAndProps(propsWithChildren)
 
@@ -37,12 +42,19 @@ class Block {
     eventBus.emit(Block.EVENTS.INIT)
   }
 
-  _getChildrenAndProps(propsWithChildren: Props) {
-    const props: Props = {}
+  _getChildrenAndProps(propsWithChildren: Props): {
+    props: Props
+    children: Record<string, Block | Block[]>
+  } {
+    const props: BlockProps = {}
     const children: Children = {}
 
     Object.entries(propsWithChildren).forEach(([key, value]) => {
-      if (Array.isArray(value) && value.every((val) => val instanceof Block)) {
+      if (
+        Array.isArray(value) &&
+        value.length > 0 &&
+        value.every((v) => v instanceof Block)
+      ) {
         children[key] = value
       } else if (value instanceof Block) {
         children[key] = value
@@ -51,7 +63,7 @@ class Block {
       }
     })
 
-    return { props, children }
+    return { props: props as Props, children }
   }
 
   private _createResources() {
@@ -102,7 +114,7 @@ class Block {
     return true
   }
 
-  setProps = (nextProps: Props) => {
+  setProps = (nextProps: Partial<Props>) => {
     if (!nextProps) {
       return
     }
@@ -141,7 +153,6 @@ class Block {
     const stub = (id: string | number) => `<div data-id="${id}"></div>`
 
     Object.entries(this.children).forEach(([key, item]) => {
-      // TODO: добавить установку для avatar
       contextAndStubs[key] = Array.isArray(item)
         ? item.reduce((acc, cur) => (acc += stub(cur.id)), '')
         : stub(item.id)
@@ -189,14 +200,10 @@ class Block {
       set: (target, prop: string, value) => {
         const oldTarget = { ...target }
 
-        target[prop] = value
+        target[prop as keyof Props] = value
 
-        const newTarget = { ...oldTarget, ...target }
-
-        const { children } = self._getChildrenAndProps(newTarget)
-
-        self.children = { ...self.children, ...children }
-
+        // Запускаем обновление компоненты
+        // Плохой cloneDeep, в следующей итерации нужно заставлять добавлять cloneDeep им самим
         self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target)
         return true
       },
@@ -221,13 +228,15 @@ class Block {
   }
 
   private _addEvents() {
-    const { events = {} } = this.props as { events: Event }
+    const { events = {} } = this.props as Props & { events: Event }
 
     Object.keys(events).forEach((eventName) => {
       if (this.props.eventElement) {
         this?._element
-          ?.querySelector(this.props.eventElement as string)
-          ?.addEventListener(eventName, events[eventName])
+          ?.querySelectorAll(this.props.eventElement as string)
+          .forEach((a) => {
+            a.addEventListener(eventName, events[eventName])
+          })
       } else {
         this._element?.addEventListener(eventName, events[eventName])
       }
@@ -235,7 +244,7 @@ class Block {
   }
 
   private _removeEvents() {
-    const { events = {} } = this.props as { events: Event }
+    const { events = {} } = this.props as Props & { events: Event }
 
     Object.keys(events).forEach((eventName) => {
       if (this._element) {

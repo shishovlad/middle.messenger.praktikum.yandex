@@ -8,12 +8,12 @@ import {
 
 interface InputProps {
   name: string
-  type: 'text' | 'email' | 'password' | 'tel'
-  label: string
+  type: 'text' | 'email' | 'password' | 'tel' | 'file' | 'submit'
+  label?: string
   value?: string
   placeholder?: string
   error?: string
-  events?: Event
+  events?: Record<string, (e: Event) => unknown>
   rules?: ValidationCode[]
 }
 
@@ -23,6 +23,7 @@ export class Input extends Block {
       ...props,
       eventElement: 'input',
       events: {
+        ...props.events,
         blur: (e: Event) => {
           const input = e.target as HTMLInputElement
           const value = input.value
@@ -35,6 +36,23 @@ export class Input extends Block {
         }
       }
     })
+  }
+
+  private getInputElement() {
+    const div = this.element as HTMLDivElement
+    return div.querySelector('input') as HTMLInputElement
+  }
+
+  public getName() {
+    return this.getInputElement().name
+  }
+
+  public getValue() {
+    return this.getInputElement().value
+  }
+
+  public setValue(value: string): void {
+    this.getInputElement().value = value
   }
 
   render() {

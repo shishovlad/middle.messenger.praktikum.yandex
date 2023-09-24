@@ -13,9 +13,12 @@ main {
   flex-direction: column;
 }
 
-a {
+a,
+.link {
+  cursor: pointer;
   display: inline;
   color: var(--blue);
+  text-decoration: underline;
   text-underline-offset: 4px;
   text-decoration-color: transparent;
   transition: var(--transition-all);

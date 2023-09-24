@@ -1,0 +1,19 @@
+import Block, { BlockProps } from '../utils/Block'
+import Router from '../utils/Router'
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function withRouter<T extends BlockProps>(Component: typeof Block<T>) {
+  type Props = typeof Component extends typeof Block<infer P extends BlockProps>
+    ? P
+    : unknown
+
+  return class WithRouter extends Component {
+    constructor(props: Props & PropsWithRouter) {
+      super({ ...props, router: Router })
+    }
+  }
+}
+
+export type PropsWithRouter = {
+  router?: typeof Router
+}

@@ -1,8 +1,11 @@
 .avatar {
+  display: block;
+  margin: auto;
   width: var(--size);
   height: var(--size);
   border-radius: 100%;
   overflow: hidden;
   object-fit: cover;
   object-position: center;
+  background-color: #e7e7e7;
 }
