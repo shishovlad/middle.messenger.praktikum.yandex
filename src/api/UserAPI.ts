@@ -1,9 +1,9 @@
-import { HTTPTransport } from '../utils/HTTPTransport'
+import { HTTPTransport } from '../utils/HTTPTransport.ts'
 import {
   UserUpdateRequest,
   UserResponse,
   UserChangePasswordRequest
-} from './types'
+} from './types.ts'
 
 export class UserAPI {
   http = new HTTPTransport()

@@ -1,12 +1,12 @@
-import Block from '../../utils/Block'
+import Block from '../../utils/Block.ts'
 import template from './template.hbs'
 import './template.css'
-import { Input } from '../../components/input'
-import { Button } from '../../components/button'
-import { onSubmitForm } from '../../utils/events/onSubmitForm'
-import AuthController from '../../controllers/AuthController'
-import { SigninRequest } from '../../api/types'
-import { Link } from '../../components/link'
+import { Input } from '../../components/input/index.ts'
+import { Button } from '../../components/button/index.ts'
+import { onSubmitForm } from '../../utils/events/onSubmitForm.ts'
+import AuthController from '../../controllers/AuthController.ts'
+import { SigninRequest } from '../../api/types.ts'
+import { Link } from '../../components/link/index.ts'
 
 export class LoginPage extends Block {
   constructor() {

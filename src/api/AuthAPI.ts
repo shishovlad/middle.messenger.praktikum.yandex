@@ -1,10 +1,10 @@
-import { HTTPTransport } from '../utils/HTTPTransport'
+import { HTTPTransport } from '../utils/HTTPTransport.ts'
 import {
   SigninRequest,
   SignupRequest,
   SignupResponse,
   UserResponse
-} from './types'
+} from './types.ts'
 
 export class AuthAPI {
   http = new HTTPTransport()

@@ -1,5 +1,5 @@
-import Block, { BlockConstructable } from './Block'
-import { render } from './render'
+import Block, { BlockConstructable } from './Block.ts'
+import { render } from './render.ts'
 
 export class Route {
   private _pathname: string

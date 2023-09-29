@@ -1,7 +1,7 @@
-import Block from '../../utils/Block'
+import Block from '../../utils/Block.ts'
 import template from './template.hbs'
 import './template.css'
-import { Button } from '../../components/button'
+import { Button } from '../../components/button/index.ts'
 
 export class NotFoundPage extends Block {
   constructor() {

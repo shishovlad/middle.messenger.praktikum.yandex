@@ -1,9 +1,9 @@
-import Block from '../../utils/Block'
+import Block from '../../utils/Block.ts'
 import template from './template.hbs'
 import './template.css'
-import { withStore } from '../../utils/Store'
-import { Avatar } from '../avatar'
-import { ChatResponse } from '../../api/types'
+import { withStore } from '../../utils/Store.ts'
+import { Avatar } from '../avatar/index.ts'
+import { ChatResponse } from '../../api/types.ts'
 
 type ChatPreviewProps = ChatResponse & {
   selectedChat: ChatResponse

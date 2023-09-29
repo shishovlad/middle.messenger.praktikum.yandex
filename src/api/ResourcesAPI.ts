@@ -1,4 +1,4 @@
-import { HTTPTransport } from '../utils/HTTPTransport'
+import { HTTPTransport } from '../utils/HTTPTransport.ts'
 
 export class ResourcesAPI {
   http = new HTTPTransport()

@@ -1,7 +1,7 @@
-import Block from '../../utils/Block'
+import Block from '../../utils/Block.ts'
 import template from './template.hbs'
 import './template.css'
-import { MessageResponse as IMessage } from '../../api/types'
+import { MessageResponse as IMessage } from '../../api/types.ts'
 
 type MessageProps = IMessage & {
   isMine: boolean

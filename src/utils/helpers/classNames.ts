@@ -1,4 +1,4 @@
-import { isArray, isPlainObject } from './isArrayOrObject'
+import { isArray, isPlainObject } from './isArrayOrObject.ts'
 
 function classNames(...args: unknown[]) {
   const list: unknown[] = []

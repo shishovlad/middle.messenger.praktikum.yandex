@@ -1,6 +1,6 @@
-import API, { ChatsAPI } from '../api/ChatsAPI'
-import store from '../utils/Store'
-import MessagesController from './MessagesController'
+import API, { ChatsAPI } from '../api/ChatsAPI.ts'
+import store from '../utils/Store.ts'
+import MessagesController from './MessagesController.ts'
 
 export class ChatsController {
   private readonly api: ChatsAPI

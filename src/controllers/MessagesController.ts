@@ -1,6 +1,6 @@
-import WSTransport, { WSTransportEvents } from '../utils/WSTransport'
-import store from '../utils/Store'
-import { MessageResponse } from '../api/types'
+import WSTransport, { WSTransportEvents } from '../utils/WSTransport.ts'
+import store from '../utils/Store.ts'
+import { MessageResponse } from '../api/types.ts'
 
 class MessagesController {
   private sockets: Map<number, WSTransport> = new Map()

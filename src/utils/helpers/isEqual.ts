@@ -1,4 +1,4 @@
-import { PlainObject, isArrayOrObject } from './isArrayOrObject'
+import { PlainObject, isArrayOrObject } from './isArrayOrObject.ts'
 
 function isEqual(lhs: PlainObject, rhs: PlainObject) {
   if (Object.keys(lhs).length !== Object.keys(rhs).length) {

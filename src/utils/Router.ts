@@ -1,7 +1,7 @@
-import { BlockConstructable } from './Block'
-import { Route } from './Route'
-import { render } from './render'
-import { NotFoundPage } from '../pages/error/404'
+import { BlockConstructable } from './Block.ts'
+import { Route } from './Route.ts'
+import { render } from './render.ts'
+import { NotFoundPage } from '../pages/error/404.ts'
 
 export enum Routes {
   Index = '/',
@@ -11,7 +11,7 @@ export enum Routes {
 }
 
 export class Router {
-  static __instance: Router
+  static __instance?: Router
 
   public routes: Route[] = []
   public history: History = window.history
@@ -35,10 +35,9 @@ export class Router {
   }
 
   start() {
-    window.onpopstate = (event) => {
-      if (event.currentTarget instanceof Window) {
-        this._onRoute(event.currentTarget.location.pathname)
-      }
+    window.onpopstate = (event: PopStateEvent) => {
+      const target = event.currentTarget as Window
+      this._onRoute(target.location.pathname)
     }
 
     this._onRoute(window.location.pathname)
@@ -61,16 +60,21 @@ export class Router {
   }
 
   go(pathname: Routes) {
-    history.pushState({}, '', pathname)
+    this.history.pushState({}, '', pathname)
     this._onRoute(pathname)
   }
 
   back() {
-    history.back()
+    this.history.back()
   }
 
   forward() {
-    history.forward()
+    this.history.forward()
+  }
+
+  reset() {
+    delete Router.__instance
+    new Router()
   }
 
   getRoute(pathname: Routes | string) {

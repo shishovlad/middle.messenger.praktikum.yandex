@@ -1,12 +1,12 @@
-import Block from '../../utils/Block'
+import Block from '../../utils/Block.ts'
 import template from './template.hbs'
 import './template.css'
-import ChatsController from '../../controllers/ChatsController'
-import { Chats } from '../../components/chats'
-import { Chat } from '../../components/chat'
-import { ChatCreate } from '../../components/chat-create'
-import { State, withStore } from '../../utils/Store'
-import { ChatUsers } from '../../components/chat-users'
+import ChatsController from '../../controllers/ChatsController.ts'
+import { Chats } from '../../components/chats/index.ts'
+import { Chat } from '../../components/chat/index.ts'
+import { ChatCreate } from '../../components/chat-create/index.ts'
+import { State, withStore } from '../../utils/Store.ts'
+import { ChatUsers } from '../../components/chat-users/index.ts'
 
 type MessengerPageProps = {
   messengerView: NonNullable<State['messengerView']>

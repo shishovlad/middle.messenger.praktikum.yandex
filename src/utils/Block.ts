@@ -1,5 +1,5 @@
 import { v4 as makeUUID } from 'uuid'
-import EventBus from './EventBus'
+import { EventBus } from './EventBus.ts'
 
 type Event = Record<string, () => void>
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

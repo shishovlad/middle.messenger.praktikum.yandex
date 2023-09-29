@@ -1,6 +1,6 @@
-import { PropsWithRouter, withRouter } from '../../hocs/withRouter'
-import Block from '../../utils/Block'
-import { Routes } from '../../utils/Router'
+import { PropsWithRouter, withRouter } from '../../hocs/withRouter.ts'
+import Block from '../../utils/Block.ts'
+import { Routes } from '../../utils/Router.ts'
 import template from './link.hbs'
 
 type LinkProps = {
