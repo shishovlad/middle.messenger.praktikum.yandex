@@ -7,7 +7,8 @@ export enum Routes {
   Index = '/',
   Register = '/sign-up',
   Settings = '/settings',
-  Messenger = '/messenger'
+  Messenger = '/messenger',
+  ServerError = '/server-error'
 }
 
 export class Router {

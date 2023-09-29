@@ -7,6 +7,7 @@ import { LoginPage } from './pages/auth/login.ts'
 import { SignupPage } from './pages/auth/signup.ts'
 import { SettingsPage } from './pages/profile/settings/index.ts'
 import { MessengerPage } from './pages/messenger/index.ts'
+import { ServerErrorPage } from './pages/error/500.ts'
 import Router, { Routes } from './utils/Router.ts'
 import AuthController from './controllers/AuthController.ts'
 
@@ -20,6 +21,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     .use(Routes.Register, SignupPage)
     .use(Routes.Settings, SettingsPage)
     .use(Routes.Messenger, MessengerPage)
+    .use(Routes.ServerError, ServerErrorPage)
 
   let isProtectedRoute = true
 
