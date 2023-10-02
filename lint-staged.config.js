@@ -1,6 +1,7 @@
-module.exports = {
+export default {
   '**/*.{js,ts,html,css}': 'npm run prettier:fix',
-  'src/**/*.css': 'npm run stylelint',
   '**/*.{js,ts}': 'npm run eslint:fix',
-  '**/*.{ts,vue}': 'npm run type-checking'
+  'src/**/*.css': 'npm run stylelint',
+  '**/*.ts': 'npm run type-checking',
+  '**/*.test.ts': 'npm run test'
 }
