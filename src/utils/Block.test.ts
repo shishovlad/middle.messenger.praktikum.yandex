@@ -8,29 +8,37 @@ const eventBusMock = {
   emit: sinon.fake()
 }
 
-describe('Block', async () => {
-  const { default: Block } = (await esmock('./Block.ts', {
-    './EventBus.ts': {
-      EventBus: class {
-        emit = eventBusMock.emit
-        on = eventBusMock.on
+describe('Block', () => {
+  it('init component', async () => {
+    const { default: Block } = (await esmock('./Block.ts', {
+      './EventBus.ts': {
+        EventBus: class {
+          emit = eventBusMock.emit
+          on = eventBusMock.on
+        }
       }
-    }
-  })) as { default: typeof BlockType }
+    })) as { default: typeof BlockType }
 
-  class ComponentMock extends Block {}
+    class ComponentMock extends Block {}
 
-  it('init', () => {
     new ComponentMock({})
-
     expect(eventBusMock.emit.calledWith('init')).to.eq(true)
   })
 
-  it('component-did-update event on props update', () => {
+  it('hook:component-did-update after props update', async () => {
+    const { default: Block } = (await esmock('./Block.ts', {
+      './EventBus.ts': {
+        EventBus: class {
+          emit = eventBusMock.emit
+          on = eventBusMock.on
+        }
+      }
+    })) as { default: typeof BlockType }
+
+    class ComponentMock extends Block {}
+
     const components = new ComponentMock({})
-
     components.setProps({ test: 'test' })
-
     expect(eventBusMock.emit.calledWith('flow:component-did-update')).eq(true)
   })
 })

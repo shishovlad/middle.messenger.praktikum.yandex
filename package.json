@@ -3,10 +3,11 @@
   "author": "shishovlad1@yandex.ru",
   "private": true,
   "version": "1.0.0",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build --emptyOutDir",
-    "start": "vite build --emptyOutDir && node ./server.js",
+    "start": "vite build --emptyOutDir && node ./server.cjs",
     "preview": "vite preview",
     "type-checking": "tsc --noEmit",
     "eslint": "eslint --ext .js,.ts --ignore-path .gitignore .",
