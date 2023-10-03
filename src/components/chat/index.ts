@@ -1,13 +1,13 @@
 import template from './template.hbs'
 import './template.css'
-import { ChatResponse, MessageResponse } from '../../api/types'
-import Block from '../../utils/Block'
-import { Button } from '../button'
-import MessagesController from '../../controllers/MessagesController'
-import { Message } from '../message'
-import store, { withStore } from '../../utils/Store'
-import { Input } from '../input'
-import ChatsController from '../../controllers/ChatsController'
+import { ChatResponse, MessageResponse } from '../../api/types.ts'
+import Block from '../../utils/Block.ts'
+import { Button } from '../button/index.ts'
+import MessagesController from '../../controllers/MessagesController.ts'
+import { Message } from '../message/index.ts'
+import store, { withStore } from '../../utils/Store.ts'
+import { Input } from '../input/index.ts'
+import ChatsController from '../../controllers/ChatsController.ts'
 
 type ChatProps = {
   selectedChat: ChatResponse | undefined

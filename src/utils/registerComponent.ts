@@ -1,4 +1,4 @@
-import Block from './Block'
+import Block from './Block.ts'
 import Handlebars from 'handlebars'
 import { HelperOptions } from 'handlebars'
 

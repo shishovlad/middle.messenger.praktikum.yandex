@@ -1,5 +1,5 @@
-import Block, { BlockProps } from '../utils/Block'
-import Router from '../utils/Router'
+import Block, { BlockProps } from '../utils/Block.ts'
+import Router from '../utils/Router.ts'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function withRouter<T extends BlockProps>(Component: typeof Block<T>) {

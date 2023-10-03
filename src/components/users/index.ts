@@ -1,7 +1,7 @@
-import Block from '../../utils/Block'
+import Block from '../../utils/Block.ts'
 import template from './template.hbs'
 import './template.css'
-import { ChatUser, UserResponse } from '../../api/types'
+import { ChatUser, UserResponse } from '../../api/types.ts'
 
 type UsersProps = {
   list: (UserResponse | ChatUser)[]

@@ -1,7 +1,7 @@
-import Block from '../../utils/Block'
+import Block from '../../utils/Block.ts'
 import template from './avatar.hbs'
 import './avatar.css'
-import ResourcesAPI from '../../api/ResourcesAPI'
+import ResourcesAPI from '../../api/ResourcesAPI.ts'
 
 export interface AvatarProps {
   size: string

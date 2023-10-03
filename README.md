@@ -12,8 +12,8 @@
 - [Регистрация](https://mellow-beijinho-28b03d.netlify.app/sign-up)
 - [Мессенджер](https://mellow-beijinho-28b03d.netlify.app/messenger)
 - [Настройки профиля](https://mellow-beijinho-28b03d.netlify.app/settings)
+- [500 ошибка](https://mellow-beijinho-28b03d.netlify.app/server-error)
 - [404 ошибка](https://mellow-beijinho-28b03d.netlify.app/anything) — любой `slug`, которого нет в `Routes`
-- [500 ошибка](https://mellow-beijinho-28b03d.netlify.app/) — _не было реализовано в рамках текущего спринта_
 
 ## Установка
 
@@ -47,6 +47,22 @@ npm run build
 npm run start
 ```
 
+## Checking code
+
+Доступные скрипты проверки кода
+
+```bash
+npm run prettier # проверка форматирования
+npm run eslint # проверка линтинга
+npm run type-checking # проверка типизации
+npm run stylelint # проверка файлов стилей
+npm run test # запуск тестов
+npm run prebuild # проверка всего кода (запуск скриптов перечисленных выше)
+
+npm run prettier:fix # отформатировать код
+npm run eslint:fix # исправить ошибки линтинга
+```
+
 ## Материалы
 
 - Макет: [Figma](https://www.figma.com/file/y7OIiC2xrD8O8ZeVR10SXf/middle.messenger.praktikum.yandex?type=design&node-id=0-1&mode=design&t=jQaFdcBYxp2ZJ8iP-0)
@@ -60,3 +76,5 @@ npm run start
 - Prettier
 - SlyleLint
 - Postcss
+- Husky + lint-staged
+- Mocha + chai

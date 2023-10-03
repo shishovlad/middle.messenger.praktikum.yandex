@@ -1,7 +1,7 @@
-import API, { AuthAPI } from '../api/AuthAPI'
-import Router, { Routes } from '../utils/Router'
-import store from '../utils/Store'
-import MessagesController from './MessagesController'
+import API, { AuthAPI } from '../api/AuthAPI.ts'
+import Router, { Routes } from '../utils/Router.ts'
+import store from '../utils/Store.ts'
+import MessagesController from './MessagesController.ts'
 
 export class AuthController {
   private readonly api: AuthAPI

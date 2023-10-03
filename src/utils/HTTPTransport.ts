@@ -1,4 +1,4 @@
-import queryStringify from './helpers/queryStringify'
+import queryStringify from './helpers/queryStringify.ts'
 
 enum METHODS {
   GET = 'GET',
@@ -20,8 +20,10 @@ type HTTPMethod = <R = unknown>(
 
 const TIMEOUT_DEFAULT = 5000
 
+export const API_URL = 'https://ya-praktikum.tech/api/v2'
+
 export class HTTPTransport {
-  public readonly API_URL = 'https://ya-praktikum.tech/api/v2'
+  public readonly API_URL = API_URL
 
   public get: HTTPMethod = (endpoint, options = {}) => {
     const url = endpoint + queryStringify(options?.data)

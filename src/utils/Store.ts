@@ -1,13 +1,13 @@
-import set from './helpers/set'
+import set from './helpers/set.ts'
 import {
   ChatResponse,
   ChatUserResponse,
   MessageResponse,
   UserResponse
-} from '../api/types'
-import Block, { BlockProps } from './Block'
-import EventBus from './EventBus'
-import isEqual from './helpers/isEqual'
+} from '../api/types.ts'
+import Block, { BlockProps } from './Block.ts'
+import { EventBus } from './EventBus.ts'
+import isEqual from './helpers/isEqual.ts'
 
 export enum StoreEvents {
   Updated = 'updated'

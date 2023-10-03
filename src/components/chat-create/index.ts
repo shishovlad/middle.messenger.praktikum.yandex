@@ -1,11 +1,11 @@
-import Block from '../../utils/Block'
+import Block from '../../utils/Block.ts'
 import template from './template.hbs'
 import './template.css'
-import { Button } from '../button'
-import store from '../../utils/Store'
-import { Input } from '../input'
-import UserAPI from '../../api/UserAPI'
-import ChatsController from '../../controllers/ChatsController'
+import { Button } from '../button/index.ts'
+import store from '../../utils/Store.ts'
+import { Input } from '../input/index.ts'
+import UserAPI from '../../api/UserAPI.ts'
+import ChatsController from '../../controllers/ChatsController.ts'
 
 export class ChatCreateBase extends Block {
   constructor() {

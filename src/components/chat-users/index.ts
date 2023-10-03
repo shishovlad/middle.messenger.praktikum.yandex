@@ -1,13 +1,13 @@
-import Block from '../../utils/Block'
+import Block from '../../utils/Block.ts'
 import template from './template.hbs'
 import './template.css'
-import { Button } from '../button'
-import store, { withStore } from '../../utils/Store'
-import { Input } from '../input'
-import UserAPI from '../../api/UserAPI'
-import { Users } from '../users'
-import ChatsController from '../../controllers/ChatsController'
-import { ChatUserResponse } from '../../api/types'
+import { Button } from '../button/index.ts'
+import store, { withStore } from '../../utils/Store.ts'
+import { Input } from '../input/index.ts'
+import UserAPI from '../../api/UserAPI.ts'
+import { Users } from '../users/index.ts'
+import ChatsController from '../../controllers/ChatsController.ts'
+import { ChatUserResponse } from '../../api/types.ts'
 
 type ChatUsersProps = {
   users: ChatUserResponse

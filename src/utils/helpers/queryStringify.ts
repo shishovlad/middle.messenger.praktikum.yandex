@@ -1,4 +1,8 @@
-import { PlainObject, isArrayOrObject, isPlainObject } from './isArrayOrObject'
+import {
+  PlainObject,
+  isArrayOrObject,
+  isPlainObject
+} from './isArrayOrObject.ts'
 
 function getParams(data: PlainObject | [], parentKey?: string) {
   const result: [string, string][] = []

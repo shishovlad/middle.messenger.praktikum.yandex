@@ -1,10 +1,10 @@
-import Block from '../../utils/Block'
+import Block from '../../utils/Block.ts'
 import template from './input.hbs'
 import './input.css'
 import {
   ValidationCode,
   onValidationInput
-} from '../../utils/events/onValidationInput'
+} from '../../utils/events/onValidationInput.ts'
 
 interface InputProps {
   name: string

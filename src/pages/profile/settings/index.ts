@@ -1,18 +1,18 @@
-import Block from '../../../utils/Block'
+import Block from '../../../utils/Block.ts'
 import template from './template.hbs'
 import './template.css'
-import { Link } from '../../../components/link'
-import { Input } from '../../../components/input'
-import { Button } from '../../../components/button'
-import { Avatar } from '../../../components/avatar'
-import { onSubmitForm } from '../../../utils/events/onSubmitForm'
-import AuthController from '../../../controllers/AuthController'
-import UserAPI from '../../../api/UserAPI'
+import { Link } from '../../../components/link/index.ts'
+import { Input } from '../../../components/input/index.ts'
+import { Button } from '../../../components/button/index.ts'
+import { Avatar } from '../../../components/avatar/index.ts'
+import { onSubmitForm } from '../../../utils/events/onSubmitForm.ts'
+import AuthController from '../../../controllers/AuthController.ts'
+import UserAPI from '../../../api/UserAPI.ts'
 import {
   UserChangePasswordRequest,
   UserResponse,
   UserUpdateRequest
-} from '../../../api/types'
+} from '../../../api/types.ts'
 import { withStore } from '../../../utils/Store'
 
 type ProfileProps = {

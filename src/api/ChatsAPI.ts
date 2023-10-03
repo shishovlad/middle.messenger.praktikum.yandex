@@ -1,10 +1,10 @@
-import { HTTPTransport } from '../utils/HTTPTransport'
+import { HTTPTransport } from '../utils/HTTPTransport.ts'
 import {
   ChatDeleteResponse,
   ChatUserResponse,
   ChatsRequest,
   ChatsResponse
-} from './types'
+} from './types.ts'
 
 export class ChatsAPI {
   http = new HTTPTransport()
